@@ -45,6 +45,24 @@ df3 = Swaps_from_Near
 df4 = Swaps_to_Near
 
 #################################################################################################
+st.write(""" ### Swap Concept ##  """)
+
+st.write("""
+Crypto swapping is the process of exchanging crypto assets for their equivalent value in another coin or token. You can directly exchange crypto assets for another without intermediates involved in the process. Crypto swapping allows you to instantly trade one cryptocurrency for another, with no crypto-to-fiat exchange required. Saving time and paying less in fees are obvious benefits, but it's far from the only reason users participate in. [[7]](https://bitpay.com/blog/what-is-a-crypto-swap/#:~:text=Crypto%20swapping%20allows%20you%20to,reason%20users%20participate%20in%20swapping.)   """)
+
+
+st.info(""" ##### In This Swap Section you can find: ####
+
+* One and Only Whale Swap List  
+* Platforms Whale Used for Swapping 
+* Top 20 Swaps from Near (Not Whale List)
+* Top 20 Swaps to Near (Not Whale List)
+
+
+""")
+
+
+#################################################################################################
 
 st.write(""" ## Whales Swap  """)
 
@@ -65,7 +83,7 @@ fig.update_layout(showlegend=True, xaxis_title=None,
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
-st.write(""" ### Top 20 Swaps from Near  """)
+st.write(""" #### Top 20 Swaps from Near  """)
 
 # Platforms User Used
 fig = px.bar(df3, x="TRADER", y="volume of swaps",
@@ -75,7 +93,7 @@ fig.update_layout(showlegend=True, xaxis_title=None,
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
-st.write(""" ### Top 20 Swaps To Near  """)
+st.write(""" #### Top 20 Swaps To Near  """)
 
 # Platforms User Used
 fig = px.bar(df4, x="TRADER", y="volume of swaps",

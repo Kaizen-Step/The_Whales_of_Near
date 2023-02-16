@@ -54,7 +54,7 @@ st.write(""" to extract top 20 Near Whales we try to calculate the amount of Nea
 
 st.table(df)
 
-st.write(""" ## Near Whales Exchange and Custodial Wallets Excluded """)
+st.write(""" ## Final List """)
 
 st.write(""" We did our best to seprate the actual Whales from custodial and exchange wallets. Following is the list of wallets that we detect as exchange or custodial and Final list of top 20 Whale after excluding exchange and custodial wallets for rest of this dashboard we focused on this top 20 Whales activity and impact they made on the market.""")
 

@@ -62,7 +62,7 @@ df6 = TX_SUCC_Fail
 st.write(""" ### Transaction Concept ##  """)
 
 st.write("""
-A transaction is a transfer of Bitcoin value on the blockchain. In very simple terms, a transaction is when participant A gives a designated amount of Bitcoin they own to participant B. Transactions are created through mobile, desktop or hardware wallets.[[4]]()   """)
+A Simply put, cryptocurrency transaction is a transfer of information made between blockchain addresses. These transfers have to be signed with a private key that corresponds to its address. Signed transactions are broadcast to the network of nodes, active computers that follow a specific set of rules to validate transactions and blocks. Valid transactions need to be confirmed by being included in blocks through the process of mining.[[4]](https://www.bitstamp.net/learn/crypto-101/how-do-cryptocurrency-transactions-work/)   """)
 
 
 st.info(""" ##### In This Transaction Section you can find: ####
@@ -87,6 +87,23 @@ fig.update_layout(legend_title=None, xaxis_title=None,
                   yaxis_title='Whales Transaction')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
+c1, c2 = st.columns(2)
+
+with c1:
+    fig = px.pie(df6, values="Number of Action Type",
+                 names="Action Type", title='Share of each Transaction Type Used by Whales [Percentage]', hole=0.4)
+    fig.update_layout(legend_title=None, legend_y=0.5)
+    fig.update_traces(textinfo='percent+value', textposition='inside')
+    st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+with c2:
+    # Top Transaction Type Used Whales [Log Value]
+    fig = px.bar(df6, x="Action Type", y="Number of Action Type",
+                 color="Action Type", title='Top Transaction Type Used Whales [Log Scale]', log_y=True)
+    fig.update_layout(showlegend=True, xaxis_title=None,
+                      yaxis_title='Number of Transaction')
+    st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
 
 # Top 10 Platforms Whales Used
 fig = px.bar(df5, x="PLATFORM", y="Platforms usage",
@@ -94,15 +111,6 @@ fig = px.bar(df5, x="PLATFORM", y="Platforms usage",
 fig.update_layout(showlegend=True, xaxis_title=None,
                   yaxis_title='Platform Usage')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
-
-# Top Transaction Type Used Whales [Log Value]
-fig = px.bar(df6, x="Action Type", y="Number of Action Type",
-             color="Action Type", title='Top Transaction Type Used Whales [Log Scale]', log_y=True)
-fig.update_layout(showlegend=True, xaxis_title=None,
-                  yaxis_title='Number of Transaction')
-st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
-
-
 ########################################################################################################################
 
 
@@ -122,7 +130,7 @@ with c1:
 with c2:
     # Whales Compare to Other Users Percentage of Transactions
     fig = px.pie(df4, values="Number of Transactions",
-                 names="STATUS", title='Whales Compare to Other Users Percentage of Transactions')
+                 names="STATUS", title='Whales Compare to Other Users Percentage of Transactions', hole=0.4)
     fig.update_layout(legend_title=None, legend_y=0.5)
     fig.update_traces(textinfo='percent', textposition='inside')
     st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
@@ -147,7 +155,7 @@ with c1:
 with c2:
     # Whales Compare to Other Users Percentage of Transactions Fees
     fig = px.pie(df4, values="TOTAL_TX_FEE",
-                 names="STATUS", title='Whales Compare to Other Users Percentage of Transactions Fees')
+                 names="STATUS", title='Whales Compare to Other Users Percentage of Transactions Fees', hole=0.4)
     fig.update_layout(legend_title=None, legend_y=0.5)
     fig.update_traces(textinfo='percent', textposition='inside')
     st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
@@ -162,7 +170,14 @@ with c3:
 
 
 ##################################################################################################################
-st.write(""" ## Weekly Transaction charts """)
+st.write(""" ## Whale Weekly Transaction and Transaction Fees  """)
+
+#  Daily Transactions Classified By Users
+fig = px.bar(df2.sort_values(["DATE", "Number of Action Type"], ascending=[
+    True, False]), x="DATE", y="Number of Action Type", color="TRADER", title='Weekly Whales Transactions Classified By Users')
+fig.update_layout(legend_title=None, xaxis_title=None,
+                  yaxis_title='Weekly Transaction')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
 # Daily Transactions Classified By Transaction Type
@@ -173,13 +188,6 @@ fig.update_layout(legend_title=None, xaxis_title=None,
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
-#  Daily Transactions Classified By Users
-fig = px.bar(df2.sort_values(["DATE", "Number of Action Type"], ascending=[
-    True, False]), x="DATE", y="Number of Action Type", color="TRADER", title='Weekly Whales Transactions Classified By Users')
-fig.update_layout(legend_title=None, xaxis_title=None,
-                  yaxis_title='Weekly Transaction')
-st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
-
 #  Daily Transactions Success and Fails
 fig = px.bar(df6.sort_values(["DATE", "Number of Action Type"], ascending=[
     True, False]), x="DATE", y="Number of Action Type", color="TX_STATUS", title='Weekly Whales Transactions Success and Fails')
@@ -189,8 +197,6 @@ st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
 #############################################################################################################
-
-st.write(""" ## Weekly Transaction Fee charts """)
 
 
 # Daily Transaction Fee Classified by Transaction Type

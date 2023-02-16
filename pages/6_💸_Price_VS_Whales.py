@@ -40,8 +40,25 @@ df2 = Near_TO_CX
 
 ############################################################################################################
 
+st.write(""" ### Whale Impact Concept ##  """)
 
-st.write(""" ## Transfer from CEX Vs Near Price """)
+st.write("""
+The community and investors watch crypto whales because they can significantly influence price movements.
+Whales can also create price volatility increases, especially when they move a large quantity of cryptocurrency in one transaction. For example, if an owner is trying to sell their bitcoin for fiat currency, the lack of liquidity and large transaction size creates downward pressure on Bitcoin's price because other market participants see the transaction. When whales sell, other investors go on high alert, watching for indicators that whales are "dumping" their holdings. [[8]](https://www.investopedia.com/terms/b/bitcoin-whale.asp#:~:text=A%20crypto%20whale%20is%20a,also%20create%20price%20volatility%20increases.)   """)
+
+
+st.info(""" ##### In This Price VS Whales Section you can find: ####
+
+* Transfer From CEX Impact on NEAR Price
+* Transfer to CEX Impact on NEAR Price
+
+
+""")
+
+
+############################################################################################################
+
+st.write(""" ## Transfer From CEX Vs Near Price """)
 
 # Transfer from CEX Vs Near Price
 fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
@@ -71,7 +88,7 @@ fig.update_yaxes(title_text='Near Price', secondary_y=True)
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
-st.write(""" ## Transfer TO CEX Vs Near Price """)
+st.write(""" ## Transfer To CEX Vs Near Price """)
 
 # Transfer To CEX Vs Near Price
 fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
