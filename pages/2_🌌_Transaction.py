@@ -37,6 +37,10 @@ def get_data(query):
         return pd.read_json('https://api.flipsidecrypto.com/api/v2/queries/e54eaa63-ab14-4313-af7a-fdff2d8abecc/data/latest')
     elif query == 'TX_SUCC_Fail':
         return pd.read_json('https://api.flipsidecrypto.com/api/v2/queries/a21367b3-6df5-447c-996e-919d2f89b6e7/data/latest')
+    elif query == 'D_TX_type':
+        return pd.read_json('https://api.flipsidecrypto.com/api/v2/queries/645f8b4c-f300-49a5-b37a-dc3a5ab7da59/data/latest')
+    elif query == 'D_Fee_Type':
+        return pd.read_json('https://api.flipsidecrypto.com/api/v2/queries/4b0ac171-828a-4afa-ae66-0758801aa3d4/data/latest')
     return None
 
 
@@ -47,6 +51,8 @@ Total_Transaction_Comparison = get_data('Total_Transaction_Comparison')
 Top10_Platforms = get_data('Top10_Platforms')
 Top10_TransactionType = get_data('Top10_TransactionType')
 TX_SUCC_Fail = get_data('TX_SUCC_Fail')
+D_TX_type = get_data('D_TX_type')
+D_Fee_Type = get_data('D_Fee_Type')
 
 
 df = TransactionType_each_Wallet
@@ -56,6 +62,8 @@ df4 = Total_Transaction_Comparison
 df5 = Top10_Platforms
 df6 = Top10_TransactionType
 df6 = TX_SUCC_Fail
+df7 = D_TX_type
+df8 = D_Fee_Type
 ######################################################################################################################
 
 
@@ -78,7 +86,11 @@ st.info(""" ##### In This Transaction Section you can find: ####
 
 
 #####################################################################################
+st.text(" \n")
+st.text(" \n")
 st.write(""" ## Whales Transaction Activity """)
+
+st.write(""" 95.1% percent of whale transactions were transferring, while Staking was ranked second-to-last before deleted accounts. What is really shocking here is that there was no NFT trading or mint transaction during the 12-month period (Checked with another query), and the number of swap transactions was relatively low. While four of the top twenty whales had no transaction during the last 12 months, "5c33c6218d47e00ef229f60da78d0897e1ee9665312550b8afd5f9c7bc6957d2" ranked first with 147,334 transactions which all of them is transferring. The user seems to be a bot due to its more than ten transactions per minute performance. "token.sweat" stood first among platforms with a significant difference from others (with 20,834 whale usage in one year). """)
 
 # Transaction Type In Each Wallet
 fig = px.bar(df.sort_values(["TRADER", "Number of Action Type"], ascending=[
@@ -99,7 +111,7 @@ with c1:
 with c2:
     # Top Transaction Type Used Whales [Log Value]
     fig = px.bar(df6, x="Action Type", y="Number of Action Type",
-                 color="Action Type", title='Top Transaction Type Used Whales [Log Scale]', log_y=True)
+                 color="Action Type", title='Top Transaction Type Used by Whales [Log Scale]', log_y=True)
     fig.update_layout(showlegend=True, xaxis_title=None,
                       yaxis_title='Number of Transaction')
     st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
@@ -113,8 +125,11 @@ fig.update_layout(showlegend=True, xaxis_title=None,
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 ########################################################################################################################
 
-
+st.text(" \n")
+st.text(" \n")
 st.write(""" ## Whale Compare to Other Users  """)
+
+st.write(""" Although the share of the top 20 whales in the number of total transactions was less than 1 percent, the average transaction per user among whales was 473.125 during 12 months, which was more than 13 times as high as this average among other users. In contrast, the average transaction fees paid by whales were lower than by regular users (0.0603 and 0.06564 Near, respectively). """)
 
 
 c1, c2, c3 = st.columns(3)
@@ -140,7 +155,7 @@ with c3:
     fig = px.bar(df4, x="STATUS", y="Average Transaction Per User",
                  color="STATUS", title='Whales Compare to Other Users Average Transactions per User [Log Scale]', log_y=True)
     fig.update_layout(showlegend=True, xaxis_title=None,
-                      yaxis_title='Number of Transactions')
+                      yaxis_title='Average Number of Transactions')
     st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 c1, c2, c3 = st.columns(3)
@@ -170,9 +185,15 @@ with c3:
 
 
 ##################################################################################################################
+st.text(" \n")
+st.text(" \n")
 st.write(""" ## Whale Weekly Transaction and Transaction Fees  """)
 
-#  Daily Transactions Classified By Users
+
+st.write(""" While the first six months of 2022 experienced fluctuation of around 2k transactions per week, the second half showed a significant rise and stood at 8000 transactions in a week. The first week of November 2022 had the highest transaction, with more than 14K. As previously mentioned, most of these 
+ transactions were transferring, but the share of function-call rose significantly in the second half of 2022.   """)
+
+#  Weekly Transactions Classified By Users
 fig = px.bar(df2.sort_values(["DATE", "Number of Action Type"], ascending=[
     True, False]), x="DATE", y="Number of Action Type", color="TRADER", title='Weekly Whales Transactions Classified By Users')
 fig.update_layout(legend_title=None, xaxis_title=None,
@@ -180,7 +201,7 @@ fig.update_layout(legend_title=None, xaxis_title=None,
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
-# Daily Transactions Classified By Transaction Type
+# Weekly Transactions Classified By Transaction Type
 fig = px.bar(df2.sort_values(["DATE", "Number of Action Type"], ascending=[
     True, False]), x="DATE", y="Number of Action Type", color="Action Type", title='Weekly Whales Transactions Classified By Transaction Type')
 fig.update_layout(legend_title=None, xaxis_title=None,
@@ -188,7 +209,7 @@ fig.update_layout(legend_title=None, xaxis_title=None,
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
-#  Daily Transactions Success and Fails
+#  Weekly Transactions Success and Fails
 fig = px.bar(df6.sort_values(["DATE", "Number of Action Type"], ascending=[
     True, False]), x="DATE", y="Number of Action Type", color="TX_STATUS", title='Weekly Whales Transactions Success and Fails')
 fig.update_layout(legend_title=None, xaxis_title=None,
@@ -199,16 +220,70 @@ st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 #############################################################################################################
 
 
-# Daily Transaction Fee Classified by Transaction Type
-fig = px.bar(df3.sort_values(["DATE", "Daily Transaction Fee"], ascending=[
-    True, False]), x="DATE", y="Daily Transaction Fee", color="Action Type", title='Weekly Transaction Fee Classified by Transaction Type')
+# Weekly Transaction Fee Classified by Transaction Type
+fig = px.bar(df3.sort_values(["DATE", "Weekly Transaction Fee"], ascending=[
+    True, False]), x="DATE", y="Weekly Transaction Fee", color="Action Type", title='Weekly Transaction Fee Classified by Transaction Type')
 fig.update_layout(legend_title=None, xaxis_title=None,
                   yaxis_title='Weekly Transaction Fees')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
-# Daily Transaction Fee Classified by Users
-fig = px.bar(df3.sort_values(["DATE", "Daily Transaction Fee"], ascending=[
-    True, False]), x="DATE", y="Daily Transaction Fee", color="TRADER", title='Weekly Transaction Fee Classified by Users')
+# Weekly Transaction Fee Classified by Users
+fig = px.bar(df3.sort_values(["DATE", "Weekly Transaction Fee"], ascending=[
+    True, False]), x="DATE", y="Weekly Transaction Fee", color="TRADER", title='Weekly Transaction Fee Classified by Users')
 fig.update_layout(legend_title=None, xaxis_title=None,
                   yaxis_title='Weekly Transaction Fees')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+
+##########################################################################################################
+st.text(" \n")
+st.text(" \n")
+st.write(""" ## Whale Daily Transaction and Transaction Fees  """)
+
+st.write(""" Whale's daily transactions remained relatively unchanged in the last three months until Feb 14, 2023, which became more than three times as high as its average. While most of these transactions were committed by one user(2800 out of a total of 3300), half of these transactions were transferring, and almost half of it was function-call. It is interesting to know what happened on that day ?!.  """)
+
+
+#  Daily Transactions Classified By Users
+fig = px.bar(df7.sort_values(["DATE", "Number of Action Type"], ascending=[
+    True, False]), x="DATE", y="Number of Action Type", color="TRADER", title='Daily Whales Transactions Classified By Users')
+fig.update_layout(legend_title=None, xaxis_title=None,
+                  yaxis_title='Daily Transaction')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+
+# Daily Transactions Classified By Transaction Type
+fig = px.bar(df7.sort_values(["DATE", "Number of Action Type"], ascending=[
+    True, False]), x="DATE", y="Number of Action Type", color="Action Type", title='Daily Whales Transactions Classified By Transaction Type')
+fig.update_layout(legend_title=None, xaxis_title=None,
+                  yaxis_title='Daily Transaction')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+
+# Daily Transaction Fee Classified by Transaction Type
+fig = px.bar(df8.sort_values(["DATE", "Daily Transaction Fee"], ascending=[
+    True, False]), x="DATE", y="Daily Transaction Fee", color="Action Type", title='Daily Transaction Fee Classified by Transaction Type')
+fig.update_layout(legend_title=None, xaxis_title=None,
+                  yaxis_title='Daily Transaction Fees')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+# Daily Transaction Fee Classified by Users
+fig = px.bar(df8.sort_values(["DATE", "Daily Transaction Fee"], ascending=[
+    True, False]), x="DATE", y="Daily Transaction Fee", color="TRADER", title='Daily Transaction Fee Classified by Users')
+fig.update_layout(legend_title=None, xaxis_title=None,
+                  yaxis_title='Daily Transaction Fees')
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+
+############################################################################################
+st.text(" \n")
+
+st.info(""" #### Coclusion: ####
+
+ * 95 percent of whale transactions were transferring- No NFT traded- relatively low stake and swaps
+ * Although whales accounted for less than 1 percent of Total transactions, they had average transaction figures 12 times higher than regular users  
+ * Number of Whales Transactions rose significantly in the second half of 2022
+ * on 14 Feb 2022, the number of transactions rose more than three times its average
+
+
+
+""")

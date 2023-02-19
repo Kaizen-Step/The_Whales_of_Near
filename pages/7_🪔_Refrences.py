@@ -21,24 +21,10 @@ with open('style.css')as f:
 
 # Aknowledgement
 st.write(""" ##     Aknowledgement 
-We are grateful to all who helped us develop this project specially [**Mr. Ali Taslimi**](https://twitter.com/AliTslm) with comprehensive streamlit open source project [Cross chain Monitoring](https://github.com/alitslm/cross_chain_monitoring) that provides streamlit functions and tools.
+We are grateful to all who helped us develop this project specially [**Mr. Ali Taslimi**](https://twitter.com/AliTslm) with comprehensive streamlit open source project [Cross chain Monitoring](https://github.com/alitslm/cross_chain_monitoring) that provides streamlit functions and tools and 0xHaM☰d Near Mega Dashboard top20 users query that helped us a lot.
 And also ****Flipside Crypto**** with massive database and last but not least ****MetricsDao**** that is the reason behind this project.
 """)
 
-# Sources
-st.write(""" ## Sources ## """)
-
-st.write("""
-1.https://www.coindesk.com/learn/what-is-near-protocol-and-how-does-it-work/    
-2.https://worldcoin.org/articles/what-is-a-crypto-whale    
-3.https://www.youtube.com/watch?v=1cozsZP8yd4&t=30s  
-4.https://www.bitstamp.net/learn/crypto-101/how-do-cryptocurrency-transactions-work/  
-5.https://academy.binance.com/en/articles/what-s-the-difference-between-a-cex-and-a-dex   
-6.https://www.forbes.com/advisor/in/investing/cryptocurrency/what-is-staking-in-crypto/#:~:text=Staking%20is%20when%20you%20lock,proof%20of%20stake%20consensus%20mechanism.   
-7.https://bitpay.com/blog/what-is-a-crypto-swap/#:~:text=Crypto%20swapping%20allows%20you%20to,reason%20users%20participate%20in%20swapping.  
-8.https://www.investopedia.com/terms/b/bitcoin-whale.asp#:~:text=A%20crypto%20whale%20is%20a,also%20create%20price%20volatility%20increases.  
-
-""")
 
 # SQL Codes
 st.write(""" ## SQL Codes ## """)
@@ -87,3 +73,19 @@ with c2:
     26. [Whale Stake Transactions](https://flipsidecrypto.xyz/edit/queries/3ec8472a-7923-4996-97c7-6c27a06a36b7)    
 
     """)
+
+
+# Sources
+st.write(""" ## Sources ## """)
+
+st.write("""
+1.https://www.coindesk.com/learn/what-is-near-protocol-and-how-does-it-work/    
+2.https://worldcoin.org/articles/what-is-a-crypto-whale    
+3.https://www.youtube.com/watch?v=1cozsZP8yd4&t=30s  
+4.https://www.bitstamp.net/learn/crypto-101/how-do-cryptocurrency-transactions-work/  
+5.https://academy.binance.com/en/articles/what-s-the-difference-between-a-cex-and-a-dex   
+6.https://www.forbes.com/advisor/in/investing/cryptocurrency/what-is-staking-in-crypto/#:~:text=Staking%20is%20when%20you%20lock,proof%20of%20stake%20consensus%20mechanism.   
+7.https://bitpay.com/blog/what-is-a-crypto-swap/#:~:text=Crypto%20swapping%20allows%20you%20to,reason%20users%20participate%20in%20swapping.  
+8.https://www.investopedia.com/terms/b/bitcoin-whale.asp#:~:text=A%20crypto%20whale%20is%20a,also%20create%20price%20volatility%20increases.  
+
+""")

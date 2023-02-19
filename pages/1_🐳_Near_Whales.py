@@ -48,7 +48,7 @@ df2 = NEAR_top20_whales_EXcluded
 ##################################################################################################################
 
 
-st.write(""" ## Near Whales Extraction """)
+st.write(""" ## Near Whales Fishing""")
 
 st.write(""" to extract top 20 Near Whales we try to calculate the amount of Near deposit in each wallet and subtract the amount withdraw out to find wallets with the most Near token. To do this we use "near.core.fact_receipts" and "near.core.fact_transactions" and substract the amount in with amount out. In following list you can find the top 20 which include custodial and exchange wallets also.     """)
 
