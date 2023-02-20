@@ -4,7 +4,7 @@ from PIL import Image
 
 # Layout
 st.set_page_config(page_title='The Whales of Near',
-                   page_icon=':bar_chart:', layout='wide')
+                   page_icon=':bar_chart:📈', layout='wide')
 st.title(' The Whales 🐋 of NEAR')
 
 
@@ -62,7 +62,7 @@ with c2:
     st.info(
         '**Data:  [Flipside Crypto](https://flipsidecrypto.xyz/)**', icon="🧠")
     st.info(
-        '**Project Github:  [The Whales of Near](https://github.com/Kaizen-Step/The_Whales_of_Near)**', icon="🐾")
+        '**Project Github:  [The Whales of Near](https://github.com/Kaizen-Step/The_Whales_of_Near)**', icon="💻")
 
 with c1:
     st.info(

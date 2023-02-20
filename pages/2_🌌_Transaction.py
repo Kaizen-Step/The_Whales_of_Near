@@ -12,7 +12,7 @@ week_days = ['Monday', 'Tuesday', 'Wednesday',
 
 # Layout
 st.set_page_config(page_title='Transactions - The Whales of Near',
-                   page_icon=':bar_chart:', layout='wide')
+                   page_icon=':bar_chart:📈', layout='wide')
 st.title('🌌Transactions')
 
 # Style
@@ -90,7 +90,7 @@ st.text(" \n")
 st.text(" \n")
 st.write(""" ## Whales Transaction Activity """)
 
-st.write(""" 95.1% percent of whale transactions were transferring, while Staking was ranked second-to-last before deleted accounts. What is really shocking here is that there was no NFT trading or mint transaction during the 12-month period (Checked with another query), and the number of swap transactions was relatively low. While four of the top twenty whales had no transaction during the last 12 months, "5c33c6218d47e00ef229f60da78d0897e1ee9665312550b8afd5f9c7bc6957d2" ranked first with 147,334 transactions which all of them is transferring. The user seems to be a bot due to its more than ten transactions per minute performance. "token.sweat" stood first among platforms with a significant difference from others (with 20,834 whale usage in one year). """)
+st.write(""" 95.1% percent of whale transactions were transferring, while Staking was ranked second-to-last before deleted accounts. What is really shocking here is that there was no NFT trading or mint transaction during the 12-month period (Checked with another query), and the number of swap transactions was relatively low. While four of the top twenty whales had no transaction during the last 12 months, "5c33c6218d47e00ef229f60da78d0897e1ee9665312550b8afd5f9c7bc6957d2" ranked first with 147,334 transactions which all of them is transferring. The user seems to be a bot due to its more than ten transactions per minute performance.  "d73888a2619c7761735f23c798536145dfa87f9306b5f21275eb4b1a7ba971b9" Ranked third with 20,284 number of transactions we discuss these two whales more in CEX exchange section. "token.sweat" stood first among platforms with a significant difference from others (with 20,834 whale usage in one year). """)
 
 # Transaction Type In Each Wallet
 fig = px.bar(df.sort_values(["TRADER", "Number of Action Type"], ascending=[

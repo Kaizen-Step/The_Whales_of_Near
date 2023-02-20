@@ -12,7 +12,7 @@ week_days = ['Monday', 'Tuesday', 'Wednesday',
 
 # Layout
 st.set_page_config(page_title='Stake - The Whales of Near',
-                   page_icon=':bar_chart:', layout='wide')
+                   page_icon=':bar_chart:📈', layout='wide')
 st.title('💰Stake')
 
 # Style
@@ -61,6 +61,8 @@ st.info(""" ##### In This Stake Section you can find: ####
 
 st.write(""" ## Stake Near """)
 
+st.write(""" Only 8 out of the top 20 whales did stake in the last 12 Months. Whale "c6d39aa078dbcba02800d1251194d33dbea2122d671435ac1c6ed5ffae383c03" staked 20.6M NEAR and ranked first, following which "6972348ec8e7c100a8f4f08171dde5e38ae0e329308e2fa60a986b6439ca3932" stood second with 8.1M NEAR staked. "figment.poolv1.near" was top-ranked pool based on number and volume with 30.9M NEAR which is 70% of total NEAR staked in the 12-month period.    """)
+
 # Number of Stake Transactions Whales have done in last 12 Month
 fig = px.bar(df, x="TX_SIGNER", y="Number of Stake TX",
              color="TX_SIGNER", title='Number of Stake Transactions Whales have done in last 12 Month')
@@ -98,7 +100,7 @@ with c2:
 ################################################################################################
 
 st.write(""" ## Unstake Near """)
-
+st.write(""" Only 3 out of 20 Unstake NEAR during the last 12 months, "68f5bab7f593e6031632570e61e27165247ef7c971285a441820d52414641937" with almost 1M NEAR, stood first. 96% of these unstaked transactions were from "hashquark.poolv1.near" with 954k NEAR volume.     """)
 
 # Number of Stake Transactions Whales have done in last 12 Month
 fig = px.bar(df2, x="TX_SIGNER", y="Number of Stake TX",
@@ -131,3 +133,18 @@ with c2:
     fig.update_layout(legend_title=None, legend_y=0.5)
     fig.update_traces(textinfo='percent+value', textposition='inside')
     st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+
+####################################################################################
+
+st.text(" \n")
+
+st.info(""" #### Coclusion: ####
+
+ * only 8 out of 20 Whales staked 
+ * one whale staked 20M and ranked first with a 12M difference from the second rank
+ * "figment.poolv1.near" is the top-ranked pool staked with 30.9M NEAR
+ * Only 1M NEAR unstaked during the last 12 months; almost all of those were from "hashquark.poolv1.near"
+
+
+""")

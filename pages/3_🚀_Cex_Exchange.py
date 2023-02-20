@@ -12,7 +12,7 @@ week_days = ['Monday', 'Tuesday', 'Wednesday',
 
 # Layout
 st.set_page_config(page_title='Cex Exchange - The Whales of Near',
-                   page_icon=':bar_chart:', layout='wide')
+                   page_icon=':bar_chart:📈', layout='wide')
 st.title('🚀CEX Exchange')
 
 # Style
@@ -66,11 +66,11 @@ st.info(""" ##### In This CEX Exchange Section you can find: ####
 
 ##### Transfer from CEX #####  
 * Each Whale Number of Transactions and Volume From CEX 
-* Weekly Transactions and Volume From CEX Prespective View (last 12 Month)
+* Weekly Transactions and Volume From CEX Prespective View (Last 12 Month)
 * Daily Transactions and Volume From CEX zoom in (Last 3 Month)
 ##### Transfer To CEX #####    
 * Each Whale Number of Transactions and Volume To CEX
-* Weekly Transactions and Volume To CEX from Prespective View (last 12 Month)
+* Weekly Transactions and Volume To CEX from Prespective View (Last 12 Month)
 * Daily Transactions and Volume To Cex zoom in (Last 3 Month)
 
 
@@ -78,7 +78,9 @@ st.info(""" ##### In This CEX Exchange Section you can find: ####
 
 
 #########################################################################################
+st.text(" \n")
 st.write(""" ## Transfer From Cex """)
+st.write(""" Among the top 20 Whales list, "d73888a2619c7761735f23c798536145dfa87f9306b5f21275eb4b1a7ba971b9" had the most number of transactions from CEX exchanges to NEAR  with 61,910 Number of transaction with more than 83.5M NEAR total Volume. In the following, you can see these were only one way due to its transfer of only 6852 transactions (10M NEAR token) to CEX exchanges. This whlae ranked third in number of total transactions """)
 
 
 # Transfer from cex Volume [Near]
@@ -105,10 +107,12 @@ with c2:
     fig.update_traces(textinfo='percent+value', textposition='inside')
     st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
-
+#################################################################################
 st.write(""" #### Weekly Transaction Prespective View """)
 
-st.write(""" from prespective view  """)
+st.write(""" From a perspective view,  "Okex" had the most number and Volume of transactions in most of the 12-month period, while whales on Binance transferred 10M NEAR in only 6 transactions on may 16,2022 week. This substantial volume transactions repeated on November 2022 and January 2023 only on Binance.  
+
+ """)
 
 # Weekly Transfer from CEX
 fig = px.bar(df.sort_values(["DATE", "number of transactions"], ascending=[
@@ -127,7 +131,7 @@ st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 st.write(""" #### Daily Transaction Zoom in """)
 
-st.write(""" Focused on last three month  """)
+st.write(""" Focused on the last three months, you can see the few "Binance" transactions with a significant volume on November 28, 2022, and December 14, 2022, and continued up until now, which on February 9, 2023, with only two transactions whales transfer 2M NEAR from "Binance" Exchange.  """)
 
 # Daily Transfer from CEX
 fig = px.bar(df3.sort_values(["DATE", "number of transactions"], ascending=[
@@ -145,7 +149,11 @@ fig.update_layout(legend_title=None, xaxis_title=None,
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 ################################################################################################################
+st.text(" \n")
 st.write(""" ## Transfer To Cex """)
+
+st.write(""" As previously mentioned in transaction Section, "5c33c6218d47e00ef229f60da78d0897e1ee9665312550b8afd5f9c7bc6957d2" had the most number of transactions among whales now we could see most of these transactions were transferring to CEX exchanges from Near token with 27,036 Number of transaction with more than 94.6M NEAR total Volume. As you see above, these were mostly one-way due to its transfer of 2112 transactions (31M NEAR tokens) from CEX exchanges. """)
+
 
 # Transfer To cex Volume [Near]
 fig = px.bar(df6, x="WHALE_WALLET", y="AMOUNT",
@@ -174,7 +182,6 @@ with c2:
 
 st.write(""" #### Weekly Transaction Prespective View """)
 
-st.write(""" from prespective view  """)
 
 # Weekly Transfer to CEX
 fig = px.bar(df2.sort_values(["DATE", "number of transactions"], ascending=[
@@ -194,7 +201,6 @@ st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 st.write(""" #### Daily Transaction Zoom in """)
 
-st.write(""" Focused on last three month  """)
 
 # Daily Transfer to CEX
 fig = px.bar(df4.sort_values(["DATE", "number of transactions"], ascending=[
@@ -212,3 +218,15 @@ fig.update_layout(legend_title=None, xaxis_title=None,
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 ##########################################################################################################
+
+st.text(" \n")
+
+st.info(""" #### Coclusion: ####
+
+ * One whale transfer 83.5M Near from CEX exchanges to NEAR in the last 12 Month which are mostly one way (10M NEAR to CEX exchange)
+ * "Okex" had the most number of transactions in the most of the period, while "Binance" transactions are low in number and huge in volume  
+ * 14M NEAR transferred from Binance on December 14, 2022, in only one day also, 2M NEAR transferred from Binance with only two transactions
+ * whale with the most number of transactions transferred 94M NEAR to CEX exchanges and only transferred 31M back to it
+
+
+""")

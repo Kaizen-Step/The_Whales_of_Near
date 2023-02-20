@@ -12,7 +12,7 @@ week_days = ['Monday', 'Tuesday', 'Wednesday',
 
 # Layout
 st.set_page_config(page_title='Swaps - The Whales of Near',
-                   page_icon=':bar_chart:', layout='wide')
+                   page_icon=':bar_chart:📈', layout='wide')
 st.title('🥏Swaps')
 
 # Style
@@ -67,7 +67,7 @@ st.info(""" ##### In This Swap Section you can find: ####
 st.write(""" ## Whales Swap  """)
 
 
-st.write(""" the only wallet with swaps is "bb273c1b4fe46a54743de83f92513d644e57423d2fee2ad4549cd4b40737f3d3" """)
+st.write(""" The only wallet with swap transactions is "bb273c1b4fe46a54743de83f92513d644e57423d2fee2ad4549cd4b40737f3d3" in the following; you can find all his swap transactions with details.""")
 
 
 # list of one wallet swap activity
@@ -77,13 +77,16 @@ st.table(df)
 
 # Platforms User Used
 fig = px.bar(df2, x="Platforms", y="Number of Swap TX",
-             color="Platforms", title='Top 10 Platforms Whales Used in Number of Transactions')
+             color="Platforms", title='Top 10 Platforms Whale Used in Number of Transactions')
 fig.update_layout(showlegend=True, xaxis_title=None,
                   yaxis_title='Number of Transaction')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
 st.write(""" #### Top 20 Swaps from Near  """)
+
+st.write(""" top 20 Near swapers were below list but none of them were among top 20 whales list. we use this chart to make a comparison between these top 20 and only whale. """)
+
 
 # Platforms User Used
 fig = px.bar(df3, x="TRADER", y="volume of swaps",
@@ -101,3 +104,13 @@ fig = px.bar(df4, x="TRADER", y="volume of swaps",
 fig.update_layout(showlegend=True, xaxis_title=None,
                   yaxis_title='Number of Transaction')
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+#################################################################################################
+
+st.text(" \n")
+
+st.info(""" #### Coclusion: ####
+
+ * there were no significant swap transaction among top 20 Whale list 
+
+""")

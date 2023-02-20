@@ -12,7 +12,7 @@ week_days = ['Monday', 'Tuesday', 'Wednesday',
 
 # Layout
 st.set_page_config(page_title='Price - The Whales of Near',
-                   page_icon=':bar_chart:', layout='wide')
+                   page_icon=':bar_chart:📈', layout='wide')
 st.title('💸 Near Price VS Whales ')
 
 # Style
@@ -57,22 +57,9 @@ st.info(""" ##### In This Price VS Whales Section you can find: ####
 
 
 ############################################################################################################
-
 st.write(""" ## Transfer From CEX Vs Near Price """)
 
-# Transfer from CEX Vs Near Price
-fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
-fig.add_trace(go.Bar(x=df["DATE"], y=df["number of transactions"],
-                     name='Transfer From CEX Num TX'), secondary_y=False)
-fig.add_trace(go.Line(x=df["DATE"], y=df["PRICE"],
-                      name='Near Price'), secondary_y=True)
-fig.update_layout(
-    title_text='Transfer From CEX Number of Transaction Vs Near Price')
-fig.update_yaxes(
-    title_text='Number of Transaction', secondary_y=False)
-fig.update_yaxes(title_text='Near Price', secondary_y=True)
-st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
-
+st.write(""" On 15 April 2022, 2.89M NEAR were transferred from CEX exchanges to NEAR by the top 20 whales, while the NEAR price experienced a peak of 17 USD. You can see in the CEX charts that on 20 April 2022, the exact amount of NEAR transferred from NEAR to CEX exchanges, and NEAR price started to fall. The whales played this game a couple of times in September and October of 2022, and after each, the NEAR price started to fall.   """)
 
 # Transfer from CEX Vs Near Price
 fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
@@ -88,7 +75,35 @@ fig.update_yaxes(title_text='Near Price', secondary_y=True)
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
 
+# Transfer from CEX Vs Near Price
+fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
+fig.add_trace(go.Bar(x=df["DATE"], y=df["number of transactions"],
+                     name='Transfer From CEX Num TX'), secondary_y=False)
+fig.add_trace(go.Line(x=df["DATE"], y=df["PRICE"],
+                      name='Near Price'), secondary_y=True)
+fig.update_layout(
+    title_text='Transfer From CEX Number of Transaction Vs Near Price')
+fig.update_yaxes(
+    title_text='Number of Transaction', secondary_y=False)
+fig.update_yaxes(title_text='Near Price', secondary_y=True)
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
+
 st.write(""" ## Transfer To CEX Vs Near Price """)
+
+# Transfer To CEX Vs Near Price
+fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
+fig.add_trace(go.Bar(x=df2["DATE"], y=df["AMOUNT"],
+                     name='Transfer From CEX Volume'), secondary_y=False)
+fig.add_trace(go.Line(x=df2["DATE"], y=df2["PRICE"],
+                      name='Near Price'), secondary_y=True)
+fig.update_layout(
+    title_text='Transfer To CEX Volume Vs Near Price')
+fig.update_yaxes(
+    title_text='Volume [Near]', secondary_y=False)
+fig.update_yaxes(title_text='Near Price', secondary_y=True)
+st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+
 
 # Transfer To CEX Vs Near Price
 fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
@@ -103,16 +118,12 @@ fig.update_yaxes(
 fig.update_yaxes(title_text='Near Price', secondary_y=True)
 st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
 
+########################################################################
+st.text(" \n")
 
-# Transfer To CEX Vs Near Price
-fig = sp.make_subplots(specs=[[{'secondary_y': True}]])
-fig.add_trace(go.Bar(x=df2["DATE"], y=df["AMOUNT"],
-                     name='Transfer From CEX Volume'), secondary_y=False)
-fig.add_trace(go.Line(x=df2["DATE"], y=df2["PRICE"],
-                      name='Near Price'), secondary_y=True)
-fig.update_layout(
-    title_text='Transfer To CEX Volume Vs Near Price')
-fig.update_yaxes(
-    title_text='Volume [Near]', secondary_y=False)
-fig.update_yaxes(title_text='Near Price', secondary_y=True)
-st.plotly_chart(fig, use_container_width=True, theme=theme_plotly)
+st.info(""" #### Coclusion: ####
+
+ * Top 20 Whales had a huge impact on NEAR price fall in April and September of 2022
+ * Each time whales transfer a significant amount of NEAR from exchanges, it was likely to transfer it back in only a couple of days  
+ * NEAR price experienced the rise from the start of 2023, and whales confirm this increase
+""")

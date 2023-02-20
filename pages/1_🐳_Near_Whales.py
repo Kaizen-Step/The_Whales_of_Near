@@ -11,8 +11,8 @@ week_days = ['Monday', 'Tuesday', 'Wednesday',
              'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 # Layout
-st.set_page_config(page_title='Supply - Nera Dashboard',
-                   page_icon=':bar_chart:', layout='wide')
+st.set_page_config(page_title='Near Whales - The Whale of Near',
+                   page_icon=':bar_chart:📈', layout='wide')
 st.title('🐳Near Whales')
 
 
